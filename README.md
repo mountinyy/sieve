@@ -1,9 +1,13 @@
-# SIEVE Core Release
+# SIEVE
 
-This is a minimal reproduction package for SIEVE-style schema-informed
-reasoning. It contains the core training and inference code only; large
-benchmark suites, private experiment launchers, checkpoints, caches, and raw
-datasets are intentionally excluded.
+Official implementation of **SIEVE**, a schema-informed reasoning framework for
+training and evaluating adaptive moral-perspective selection in language model
+responses.
+
+SIEVE learns a gate over moral schemas and uses the selected schema mixture to
+assemble structured reasoning prompts. This repository provides the training
+pipeline, inference utilities, and benchmark runner used to train a SIEVE gate
+and compare SIEVE-guided generation against base model generation.
 
 ## Installation
 
@@ -22,7 +26,7 @@ export OPENAI_API_KEY=...
 export GEMINI_API_KEY=...
 ```
 
-## Data Format
+## Data
 
 Training data is a JSON list. Each row should contain:
 
@@ -63,7 +67,7 @@ Important outputs:
 - `outputs/sieve/config.json`
 - `cache/sieve/` extraction cache
 
-## Run Benchmark
+## Evaluate
 
 Base model:
 
@@ -94,12 +98,13 @@ The benchmark writes:
 - `responses.json`
 - `summary.json`
 
-## Notes for Paper Reproduction
+## Reproducing Paper Experiments
 
-- Raw datasets and trained checkpoints are not bundled in this repository.
-- Use the paper's dataset preparation instructions and pass paths through
+- Raw datasets and trained checkpoints are distributed separately from the
+  source code.
+- Follow the dataset preparation instructions from the paper and pass paths via
   `TRAIN_DATA_PATH`, `TEST_DATA_PATH`, and `DATASET_PATH`.
-- Use environment variables for API credentials. Do not commit secrets.
-- This release focuses on SIEVE core training and inference; additional
-  baselines and analysis scripts from the internal research workspace are not
-  included.
+- Use environment variables for API credentials; never commit secrets or local
+  cache files.
+- Checkpoints can be loaded by setting `GATE_CHECKPOINT` to the checkpoint
+  directory containing `gate_last.pt`, `trainer_last.pt`, and `config.json`.
