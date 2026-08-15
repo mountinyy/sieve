@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+cache/
+logs/
+outputs/
+results/
+checkpoints/
+*.pt
+*.bin
+*.safetensors
+wandb/

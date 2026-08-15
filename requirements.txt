@@ -1,0 +1,12 @@
+torch
+transformers
+datasets
+hydra-core
+omegaconf
+openai
+google-genai
+anthropic
+vllm
+tqdm
+numpy
+scikit-learn
